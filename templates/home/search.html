@@ -1,0 +1,51 @@
+{% extends 'basic.html' %}
+
+
+{% block title %}
+Blog Page
+{% endblock title %}
+{% block body %}
+<div class="nav-scroller py-1 mb-2">
+    <nav class="nav d-flex justify-content-center" style="margin:10px"><center>
+        <form class="d-flex justify-content-justify" method="get" action="/search" role="search">
+            <button class="btn btn" type="submit" id="query" name="query" value="World">World</button>
+            <button class="btn btn" type="submit" id="query" name="query" value="India">India</button>
+            <button class="btn btn" type="submit" id="query" name="query" value="Technology">Technology</button>
+            <button class="btn btn" type="submit" id="query" name="query" value="Design">Design</button>
+            <button class="btn btn" type="submit" id="query" name="query" value="Culture">Culture</button>
+            <button class="btn btn" type="submit" id="query" name="query" value="Business">Business</button>
+            <button class="btn btn" type="submit" id="query" name="query" value="Politics">Politics</button>
+            <button class="btn btn" type="submit" id="query" name="query" value="Opinion">Opinion</button>
+            <button class="btn btn" type="submit" id="query" name="query" value="Science">Science</button>
+            <button class="btn btn" type="submit" id="query" name="query" value="Health">Health</button>
+            <button class="btn btn" type="submit" id="query" name="query" value="Style">Style</button>
+            <button class="btn btn" type="submit" id="query" name="query" value="Travel">Travel</button>
+        </form></center>
+    </nav>
+</div>
+<h2 style="margin:20px">Search Result</h2>
+
+{% if allpost|length < 1 %}
+<center><strong><h3>This looks so empty :( </h3></strong></center>
+<center><strong><h5>No results for {{query}}</h5></strong></center>
+{% endif %}
+
+{% for Post in allpost %}
+<div class="row mb-2">
+    <div class="col-11">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-column position-static">
+                <strong class="d-inline-block mb-2 text-primary"><h4>{{Post.title}}</h4></strong>
+                <h6 class="mb-0">By {{Post.author}}</h6>
+                <div class="mb-1 text-muted">{{Post.timestamp}}</div>
+                <p class="card-text mb-auto">{{Post.content | truncatechars:400}}</p>
+                <a href="/Blogs/{{Post.slug}}" class="stretched-link">Continue reading</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endfor %}
+
+
+{% endblock body %}

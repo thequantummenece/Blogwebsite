@@ -1,0 +1,24 @@
+{% extends 'basic.html' %}
+
+
+{% block title %}
+Blog Post
+{% endblock title %}
+
+{% block blogactive %}active{% endblock blogactive %}
+
+{% block body %}
+{% for poost in post %}
+<div class = "container my-3">
+    <div class = "blog-post">
+        <h2 class = "blog-post-title">
+            {{poost.title}}
+        </h2>
+        <p class="blog-post meta">
+            {{poost.datetime}} By <a herf = "#"> {{poost.author}}</a>
+        </p>
+        <p>{{poost.content}}</p>
+    </div>
+</div>
+{% endfor %}
+{% endblock body %}

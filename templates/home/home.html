@@ -1,0 +1,102 @@
+{% extends 'basic.html' %}
+
+
+{% block title %}
+Home
+{% endblock title %}
+
+{% block homeactive %} active {% endblock homeactive %}
+
+{% block body %}
+<div class="nav-scroller py-1 mb-2">
+    <nav class="nav d-flex justify-content-center" style="margin:10px"><center>
+        <form class="d-flex justify-content-justify" method="get" action="/search" role="search">
+            <button class="btn btn" type="submit" id="query" name="query" value="World">World</button>
+            <button class="btn btn" type="submit" id="query" name="query" value="India">India</button>
+            <button class="btn btn" type="submit" id="query" name="query" value="Technology">Technology</button>
+            <button class="btn btn" type="submit" id="query" name="query" value="Design">Design</button>
+            <button class="btn btn" type="submit" id="query" name="query" value="Culture">Culture</button>
+            <button class="btn btn" type="submit" id="query" name="query" value="Business">Business</button>
+            <button class="btn btn" type="submit" id="query" name="query" value="Politics">Politics</button>
+            <button class="btn btn" type="submit" id="query" name="query" value="Opinion">Opinion</button>
+            <button class="btn btn" type="submit" id="query" name="query" value="Science">Science</button>
+            <button class="btn btn" type="submit" id="query" name="query" value="Health">Health</button>
+            <button class="btn btn" type="submit" id="query" name="query" value="Style">Style</button>
+            <button class="btn btn" type="submit" id="query" name="query" value="Travel">Travel</button>
+        </form></center>
+    </nav>
+</div>
+
+<main class="container">
+    <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+        <div class="col-md-6 px-0">
+            <h1 class="display-4 fst-italic">Welcome to BlogsBaby</h1>
+            <p class="lead my-3">The Blog site providing with various topics to dive in....</p>
+            <p class="lead mb-0"><a href="/Blogs" class="text-white fw-bold">Continue reading...</a></p>
+        </div>
+    </div>
+
+    <div class="row mb-2">
+        {% for Post in allposts|slice:":1" %}
+        <div class="col-md-6">
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col p-4 d-flex flex-column position-static">
+                    <strong class="d-inline-block mb-2 text-primary">{{Post.title}}</strong>
+                    <h3 class="mb-0">{{Post.author}}</h3>
+                    <div class="mb-1 text-muted">{{Post.timestamp}}</div>
+                    <p class="card-text mb-auto">{{Post.content | truncatechars:400}}</p>
+                    <a href="/Blogs/{{Post.slug}}" class="stretched-link">Continue reading</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% for Post in allposts|slice:"1:2" %}
+        <div class="col-md-6">
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col p-4 d-flex flex-column position-static">
+                    <strong class="d-inline-block mb-2 text-success">{{Post.title}}</strong>
+                    <h3 class="mb-0">{{Post.author}}</h3>
+                    <div class="mb-1 text-muted">{{Post.timestamp}}</div>
+                    <p class="mb-auto">{{Post.content | truncatechars:400}}</p>
+                    <a href="/Blogs/{{Post.slug}}" class="stretched-link">Continue reading</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div>
+        <div class="col-md-4">
+            <div class="position-sticky" style="top: 2rem;">
+                <div class="p-4">
+                    <h4 class="fst-italic">Archives</h4>
+                    <ol class="list-unstyled mb-0">
+                        <li><a href="#">March 2021</a></li>
+                        <li><a href="#">February 2021</a></li>
+                        <li><a href="#">January 2021</a></li>
+                        <li><a href="#">December 2020</a></li>
+                        <li><a href="#">November 2020</a></li>
+                        <li><a href="#">October 2020</a></li>
+                        <li><a href="#">September 2020</a></li>
+                        <li><a href="#">August 2020</a></li>
+                        <li><a href="#">July 2020</a></li>
+                        <li><a href="#">June 2020</a></li>
+                        <li><a href="#">May 2020</a></li>
+                        <li><a href="#">April 2020</a></li>
+                    </ol>
+                </div>
+
+                <div class="p-4">
+                    <h4 class="fst-italic">Elsewhere</h4>
+                    <ol class="list-unstyled">
+                        <li><a href="#">GitHub</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Facebook</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+{% endblock body %}
