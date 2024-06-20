@@ -1,5 +1,6 @@
 {% extends 'basic.html' %}
 
+{% load static %}
 
 {% block title %}
 About
@@ -10,7 +11,7 @@ About
 {% block body %}
 <div class="about-section">
     <h1>About Me</h1>
-    <img src="Blog/static/Front Facing.jpg" alt="Profile Picture">
+    <img src="{% static 'Front.jpg' %}" alt="My image" style="width: 200px; height: auto;">
     <p>Hello! My name is <strong>Aadesh Malani</strong>. I'm a Software Engineer based in Balotra. I started this blog to share my thoughts, experiences, and knowledge about anything I find funny.</p>
     <p>I have been passionate and Curious about Various things since I was born and love to explore and write about it. When I'm not blogging, you can find me at any cafe thinking about what to blog next.</p>
     <p>Through this blog, I hope to connect with like-minded individuals and create a community where we can share ideas, learn from each other, and grow together. Thank you for visiting my blog!</p>
